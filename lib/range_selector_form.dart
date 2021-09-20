@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_foudations/randomizer_change_notifier.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_foudations/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RangeSelectorForm extends StatelessWidget {
+class RangeSelectorForm extends ConsumerWidget {
   final GlobalKey<FormState> formKey;
 
   const RangeSelectorForm({Key? key, required this.formKey}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetReference ref) {
+    final randomizer = ref.watch(randomizerProvider);
+
     return Form(
         key: formKey,
         child: Padding(
@@ -18,16 +20,14 @@ class RangeSelectorForm extends StatelessWidget {
             children: [
               RangeSelectorTextFormField(
                 labelText: 'Minimum',
-                intValueSetter: (value) =>
-                    context.read<RandomizerChangeNotifier>().min = value,
+                intValueSetter: (value) => randomizer.min = value,
               ),
               SizedBox(
                 height: 12,
               ),
               RangeSelectorTextFormField(
                   labelText: 'Maximum',
-                  intValueSetter: (value) =>
-                      context.read<RandomizerChangeNotifier>().max = value),
+                  intValueSetter: (value) => randomizer.max = value),
             ],
           ),
         ));
