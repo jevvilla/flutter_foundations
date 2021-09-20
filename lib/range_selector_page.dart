@@ -2,20 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_foudations/randomizer_page.dart';
 import 'package:flutter_foudations/range_selector_form.dart';
 
-class RangeSelectorPage extends StatefulWidget {
+class RangeSelectorPage extends StatelessWidget {
+  final formKey = GlobalKey<FormState>();
+
   RangeSelectorPage({Key? key}) : super(key: key);
 
   @override
-  _RangeSelectorPageState createState() => _RangeSelectorPageState();
-}
-
-class _RangeSelectorPageState extends State<RangeSelectorPage> {
-  final formKey = GlobalKey<FormState>();
-  int _min = 0;
-  int _max = 0;
-
-  @override
   Widget build(BuildContext context) {
+    int _min = 0;
+    int _max = 0;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Range'),
