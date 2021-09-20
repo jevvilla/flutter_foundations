@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_foudations/randomizer_change_notifier.dart';
+import 'package:provider/provider.dart';
 
 class RangeSelectorForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
-  final void Function(int value) minValueSetter;
-  final void Function(int value) maxValueSetter;
 
-  const RangeSelectorForm(
-      {Key? key,
-      required this.formKey,
-      required this.maxValueSetter,
-      required this.minValueSetter})
-      : super(key: key);
+  const RangeSelectorForm({Key? key, required this.formKey}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +18,16 @@ class RangeSelectorForm extends StatelessWidget {
             children: [
               RangeSelectorTextFormField(
                 labelText: 'Minimum',
-                intValueSetter: minValueSetter,
+                intValueSetter: (value) =>
+                    context.read<RandomizerChangeNotifier>().min = value,
               ),
               SizedBox(
                 height: 12,
               ),
               RangeSelectorTextFormField(
-                  labelText: 'Maximum', intValueSetter: maxValueSetter),
+                  labelText: 'Maximum',
+                  intValueSetter: (value) =>
+                      context.read<RandomizerChangeNotifier>().max = value),
             ],
           ),
         ));

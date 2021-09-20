@@ -9,23 +9,17 @@ class RangeSelectorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _min = 0;
-    int _max = 0;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Range'),
       ),
-      body: RangeSelectorForm(
-          formKey: formKey,
-          maxValueSetter: (value) => _max = value,
-          minValueSetter: (value) => _min = value),
+      body: RangeSelectorForm(formKey: formKey),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (formKey.currentState?.validate() == true) {
             formKey.currentState?.save();
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => RandomizerPage(max: _max, min: _min)));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => RandomizerPage()));
           }
         },
         child: Icon(Icons.arrow_forward),
