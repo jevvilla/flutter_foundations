@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_foudations/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,7 +22,8 @@ class RandomizerPage extends ConsumerWidget {
         )),
       ),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => randomizer.generateRandomNumber(),
+          onPressed: () =>
+              context.read(randomizerProvider.notifier).generateRandomNumber(),
           label: Text('generate')),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

@@ -32,10 +32,13 @@ dependencies:
       url: https://github.com/rrousselGit/river_pod.git
       ref: 147be70df096015af0633456a951d8f2f9c66dc9
       path: packages/flutter_riverpod
+  freezed_annotation: ^0.14.2
 
 dev_dependencies:
+  build_runner: ^2.1.2
   flutter_test:
     sdk: flutter
+  freezed: ^0.14.2
 
 dependency_overrides:
   riverpod:
